@@ -49,12 +49,12 @@ const Card = (article) => {
 };
 
 const cardAppender = (selector) => {
-  axios.get(`http://localhost:5000/api/articles`).then((data) => {
-    let dataArticles = data.data.articles;
-    console.log(data);
-    for (let topic in dataArticles) {
+  axios.get(`http://localhost:5000/api/articles`).then((resp) => {
+    let articleData = resp.data.articles;
+    console.log(resp);
+    for (let topic in articleData) {
       console.log(topic);
-      data.data.articles[topic].forEach((item) => {
+      resp.data.articles[topic].forEach((item) => {
         let newCard = Card(item);
         const classSelector = document.querySelector(selector);
         classSelector.appendChild(newCard);
